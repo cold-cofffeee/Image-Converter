@@ -1,0 +1,17 @@
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+README.md
+QUICK_START.md
+SETUP_GUIDE.md
+IMPLEMENTATION_README.md
+ARCHITECTURE.md
+COMPLETE_SUMMARY.md
+PROJECT_STRUCTURE.md
+uploads/*
+!uploads/.gitkeep
+*.md
+.vscode
+.DS_Store

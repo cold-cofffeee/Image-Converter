@@ -1,0 +1,31 @@
+name: Keep Render App Alive
+
+on:
+  schedule:
+    # Runs every 14 minutes (optimal for free tier)
+    # Render free tier sleeps after 15 min of inactivity
+    - cron: '*/14 * * * *'
+  workflow_dispatch: # Allows manual trigger from Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Health Endpoint
+        run: |
+          echo "Pinging app at $(date)"
+          response=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.RENDER_APP_URL }}/api/health)
+          if [ $response -eq 200 ]; then
+            echo "✅ App is awake - Status: $response"
+          else
+            echo "⚠️ Unexpected status: $response"
+          fi
+      
+      - name: Ping Homepage
+        run: |
+          curl -s -o /dev/null -w "Homepage Status: %{http_code}\n" ${{ secrets.RENDER_APP_URL }}/
+      
+      - name: Summary
+        run: |
+          echo "Keep-alive completed at $(date)"
+          echo "Next ping in 14 minutes"
