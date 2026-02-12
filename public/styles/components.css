@@ -34,14 +34,18 @@
 }
 
 .btn-secondary {
-  background-color: var(--color-white);
-  color: var(--text-primary);
-  border-color: var(--border-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  border-width: 2px;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: var(--color-gray-50);
-  border-color: var(--border-secondary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-lg {
@@ -133,13 +137,15 @@
 
 .upload-zone:hover {
   border-color: var(--color-primary);
-  background: var(--color-primary-light);
+  background: rgba(37, 99, 235, 0.03);
+  transform: translateY(-2px);
 }
 
 .upload-zone.dragover {
   border-color: var(--color-primary);
-  background: var(--color-primary-light);
+  background: rgba(37, 99, 235, 0.08);
   border-style: solid;
+  transform: scale(1.02);
 }
 
 .upload-zone-icon {
