@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert files online for free. Fast, secure, and easy to use file converter.">
+  <title>File Converter - ConvertHub</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/design-system.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/tool-page.css">
+</head>
+<body>
+  <div class="tool-page">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="header-logo">
+            <span>🔄</span>
+            <span>ConvertHub</span>
+          </a>
+          <nav class="header-nav">
+            <a href="/#tools" class="header-nav-link">All Tools</a>
+            <a href="/#features" class="header-nav-link">Features</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tool Content -->
+    <main class="tool-page-content">
+      <div class="container">
+        <!-- Tool Header -->
+        <div class="tool-header" id="toolHeader">
+          <div class="tool-header-icon" id="toolIcon">📁</div>
+          <h1 class="tool-header-title" id="toolTitle">File Converter</h1>
+          <p class="tool-header-description" id="toolDescription">
+            Convert your files quickly and easily
+          </p>
+        </div>
+
+        <!-- Tool Main Section -->
+        <div class="tool-main">
+          <!-- Upload Section -->
+          <div class="tool-section" id="uploadSection">
+            <h2 class="tool-section-title">Upload Files</h2>
+            <div class="upload-zone" id="uploadZone">
+              <div class="upload-zone-icon">📁</div>
+              <h3 class="text-xl font-semibold mb-2">Drop files here or click to browse</h3>
+              <p class="text-secondary text-sm" id="uploadHint">Supported formats: JPG, PNG, PDF, etc.</p>
+              <input type="file" id="fileInput" style="display: none;" multiple>
+            </div>
+            
+            <div id="filesListContainer" class="hidden mt-6">
+              <h3 class="text-lg font-semibold mb-4">Selected Files</h3>
+              <div class="files-list" id="filesList"></div>
+            </div>
+          </div>
+
+          <!-- Options Section -->
+          <div class="tool-section hidden" id="optionsSection">
+            <h2 class="tool-section-title">Conversion Options</h2>
+            <div class="options-grid" id="optionsGrid">
+              <!-- Dynamic options will be inserted here -->
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn btn-primary btn-lg" id="convertBtn">
+                <span>Convert Files</span>
+              </button>
+              <button class="btn btn-secondary" id="clearBtn">
+                <span>Clear All</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress Section -->
+          <div class="tool-section hidden" id="progressSection">
+            <h2 class="tool-section-title">Converting...</h2>
+            <div class="conversion-progress">
+              <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+              </div>
+              <p class="conversion-status" id="progressStatus">Preparing files...</p>
+            </div>
+          </div>
+
+          <!-- Result Section -->
+          <div class="tool-section hidden" id="resultSection">
+            <div class="result-section">
+              <div class="result-icon">✓</div>
+              <h2 class="result-title">Conversion Complete!</h2>
+              <p class="result-description">Your files have been converted successfully.</p>
+              <div class="result-actions">
+                <button class="btn btn-primary btn-lg" id="downloadBtn">
+                  <span>Download Files</span>
+                </button>
+                <button class="btn btn-secondary" id="convertAnotherBtn">
+                  <span>Convert Another</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="tool-info-section" id="infoSection">
+          <h2 class="info-section-title">How It Works</h2>
+          <div class="info-grid">
+            <div class="info-card">
+              <h3 class="info-card-title">1. Upload Files</h3>
+              <p class="info-card-text">
+                Drag and drop your files or click to browse. You can upload multiple files at once.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-card-title">2. Configure Options</h3>
+              <p class="info-card-text">
+                Choose your desired output format and adjust quality settings as needed.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-card-title">3. Download</h3>
+              <p class="info-card-text">
+                Click convert and download your files. Multiple files are packaged in a ZIP.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="faq-section">
+            <h2 class="info-section-title">Frequently Asked Questions</h2>
+            <div class="faq-item">
+              <h3 class="faq-question">Is this free to use?</h3>
+              <p class="faq-answer">
+                Yes! All our conversion tools are completely free with no hidden fees or subscriptions.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3 class="faq-question">Is my data secure?</h3>
+              <p class="faq-answer">
+                Absolutely. Files are processed securely on our servers and automatically deleted after conversion.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3 class="faq-question">What's the file size limit?</h3>
+              <p class="faq-answer">
+                You can upload files up to 100MB each. For larger files, consider compressing them first.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools Section -->
+        <div class="related-tools-section">
+          <h2 class="related-tools-title">Related Tools</h2>
+          <div class="related-tools-grid" id="relatedTools"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-bottom-text">
+            © 2026 ConvertHub. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/utils/api.js"></script>
+  <script src="/js/utils/storage.js"></script>
+  <script src="/js/components/toast.js"></script>
+  <script src="/js/components/file-uploader.js"></script>
+  <script src="/js/components/file-list.js"></script>
+  <script src="/js/components/progress-bar.js"></script>
+  <script src="/js/components/tool-card.js"></script>
+  <script src="/js/pages/tool-page.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

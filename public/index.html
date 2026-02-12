@@ -1,119 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Image Converter</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online file converter. Convert images, PDFs, videos, audio files, and documents. Fast, secure, and easy to use.">
+  <meta name="keywords" content="file converter, image converter, pdf converter, video converter, audio converter, online converter">
+  <title>ConvertHub - Free Online File Converter</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/design-system.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/homepage.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
     <div class="container">
-        <header>
-            <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="32" rx="8" fill="url(#gradient)"/>
-                    <path d="M8 12C8 10.8954 8.89543 10 10 10H14C15.1046 10 16 10.8954 16 12V20C16 21.1046 15.1046 22 14 22H10C8.89543 22 8 21.1046 8 20V12Z" fill="white"/>
-                    <path d="M18 12C18 10.8954 18.8954 10 20 10H22C23.1046 10 24 10.8954 24 12V20C24 21.1046 23.1046 22 22 22H20C18.8954 22 18 21.1046 18 20V12Z" fill="white"/>
-                    <defs>
-                        <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#667eea"/>
-                            <stop offset="1" stop-color="#764ba2"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <h1>Image Converter</h1>
-            </div>
-            <p class="subtitle">Convert your images to any format instantly</p>
-        </header>
-
-        <main>
-            <div class="upload-section">
-                <div class="upload-area" id="uploadArea">
-                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
-                    <div class="upload-content">
-                        <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        <h3>Drop your images here</h3>
-                        <p>or click to browse (multiple files supported)</p>
-                        <span class="file-types">Supports: JPG, PNG, GIF, WebP, TIFF, BMP, SVG</span>
-                    </div>
-                </div>
-
-                <div class="preview-section" id="previewSection" style="display: none;">
-                    <div class="preview-header">
-                        <h3>Selected Files (<span id="fileCount">0</span>)</h3>
-                        <button class="btn-secondary" id="removeBtn">Clear All</button>
-                    </div>
-                    <div class="files-list" id="filesList"></div>
-                </div>
-            </div>
-
-            <div class="conversion-section" id="conversionSection" style="display: none;">
-                <div class="format-selection">
-                    <label for="formatSelect">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                        </svg>
-                        Output Format
-                    </label>
-                    <select id="formatSelect" class="format-select">
-                        <option value="">Select format...</option>
-                    </select>
-                </div>
-
-                <div class="quality-section" id="qualitySection" style="display: none;">
-                    <label for="qualitySlider">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                        Quality: <span id="qualityValue">90</span>%
-                    </label>
-                    <input type="range" id="qualitySlider" class="quality-slider" min="1" max="100" value="90">
-                </div>
-
-                <button class="btn-primary" id="convertBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="23 4 23 10 17 10"></polyline>
-                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                    </svg>
-                    Convert Image
-                </button>
-            </div>
-
-            <div class="progress-section" id="progressSection" style="display: none;">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <p class="progress-text" id="progressText">Converting...</p>
-            </div>
-
-            <div class="success-section" id="successSection" style="display: none;">
-                <div class="success-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                </div>
-                <h3>Conversion Complete!</h3>
-                <p>Your image has been converted successfully</p>
-                <button class="btn-primary" id="convertAnotherBtn">Convert Another Image</button>
-            </div>
-        </main>
-
-        <footer>
-            <p>Professional Image Converter • Built with Node.js & Sharp</p>
-        </footer>
+      <div class="header-content">
+        <a href="/" class="header-logo">
+          <span>🔄</span>
+          <span>ConvertHub</span>
+        </a>
+        <nav class="header-nav">
+          <a href="#tools" class="header-nav-link">Tools</a>
+          <a href="#features" class="header-nav-link">Features</a>
+          <a href="#about" class="header-nav-link">About</a>
+        </nav>
+      </div>
     </div>
+  </header>
 
-    <script src="client.js"></script>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Convert Any File Format</h1>
+      <p class="hero-subtitle">
+        Fast, free, and secure online file converter. 
+        Convert images, PDFs, videos, audio, and documents with ease.
+      </p>
+      <div class="hero-cta">
+        <a href="#tools" class="btn btn-primary btn-lg">Browse Tools</a>
+        <a href="#features" class="btn btn-secondary btn-lg">Learn More</a>
+      </div>
+      
+      <!-- Quick Convert Box -->
+      <div class="quick-convert">
+        <div class="tool-section">
+          <div class="upload-zone" id="quickUploadZone">
+            <div class="upload-zone-icon">📁</div>
+            <h3 class="text-xl font-semibold mb-2">Drop files here to convert</h3>
+            <p class="text-secondary text-sm">or click to browse</p>
+            <input type="file" id="quickFileInput" style="display: none;" multiple>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="section" id="tools">
+    <div class="container">
+      <div id="toolsContainer"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="text-4xl font-bold text-center mb-12">Why Choose ConvertHub?</h2>
+      <div class="features-grid">
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-description">
+            Powered by high-performance processing engines for rapid conversions
+          </p>
+        </div>
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">100% Secure</h3>
+          <p class="feature-description">
+            All files are processed locally on our servers and automatically deleted
+          </p>
+        </div>
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">💯</div>
+          <h3 class="feature-title">Completely Free</h3>
+          <p class="feature-description">
+            No subscriptions, no hidden fees. All tools are free to use
+          </p>
+        </div>
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">📦</div>
+          <h3 class="feature-title">Bulk Processing</h3>
+          <p class="feature-description">
+            Convert multiple files at once and download as a ZIP archive
+          </p>
+        </div>
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">🎯</div>
+          <h3 class="feature-title">High Quality</h3>
+          <p class="feature-description">
+            Maintain maximum quality with customizable output settings
+          </p>
+        </div>
+        <div class="feature-item stagger-item">
+          <div class="feature-icon">🌐</div>
+          <h3 class="feature-title">Any Device</h3>
+          <p class="feature-description">
+            Works on desktop, tablet, and mobile. No installation required
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-section-title">Image Tools</h3>
+          <div class="footer-links" id="footerImageTools"></div>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">PDF Tools</h3>
+          <div class="footer-links" id="footerPdfTools"></div>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">Video & Audio</h3>
+          <div class="footer-links" id="footerMediaTools"></div>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">Document & Archive</h3>
+          <div class="footer-links" id="footerDocTools"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">
+          © 2026 ConvertHub. All rights reserved. | Free Online File Converter
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/utils/api.js"></script>
+  <script src="/js/utils/storage.js"></script>
+  <script src="/js/components/toast.js"></script>
+  <script src="/js/components/tool-card.js"></script>
+  <script src="/js/pages/homepage.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>
